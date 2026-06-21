@@ -30,5 +30,19 @@ pipeline {
                 sh 'docker build -t angular-app:${BUILD_NUMBER} .'
             }
         }
+
+        stage('Push To ECR') {
+            steps {
+                sh '''
+                aws ecr get-login-password --region $AWS_REGION | \
+                docker login --username AWS --password-stdin $ECR_REPO
+
+                docker tag angular-app:${BUILD_NUMBER} \
+                $ECR_REPO:${BUILD_NUMBER}
+
+                docker push $ECR_REPO:${BUILD_NUMBER}
+                '''
+            }
+        }
     }
 }

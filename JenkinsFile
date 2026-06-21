@@ -59,11 +59,14 @@ pipeline {
 
         stage('Deploy To EKS') {
             steps {
-                sh '''
+                sh """
                 kubectl apply -f k8s/ --validate=false
-                kubectl rollout restart deployment/angular-app
+
+                kubectl set image deployment/angular-app \
+                angular-app=533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+
                 kubectl rollout status deployment/angular-app
-                '''
+                """
             }
         }
     }

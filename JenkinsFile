@@ -34,13 +34,14 @@ pipeline {
         stage('Push To ECR') {
             steps {
                 sh '''
-                aws ecr get-login-password --region $AWS_REGION | \
-                docker login --username AWS --password-stdin $ECR_REPO
+                aws ecr get-login-password --region us-east-1 | \
+                docker login --username AWS --password-stdin 225279655140.dkr.ecr.us-east-1.amazonaws.com
 
                 docker tag angular-app:${BUILD_NUMBER} \
-                $ECR_REPO:${BUILD_NUMBER}
+                225279655140.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
 
-                docker push $ECR_REPO:${BUILD_NUMBER}
+                docker push \
+                225279655140.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
                 '''
             }
         }

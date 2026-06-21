@@ -24,5 +24,11 @@ pipeline {
                 sh 'ls -R dist'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t angular-app:${BUILD_NUMBER} .'
+            }
+        }
     }
 }

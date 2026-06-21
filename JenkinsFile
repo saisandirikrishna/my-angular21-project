@@ -42,6 +42,12 @@ pipeline {
 
                 docker push \
                 533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+
+                docker tag angular-app:${BUILD_NUMBER} \
+                533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+
+                docker push \
+                533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
                 '''
             }
         }

@@ -1,0 +1,66 @@
+<div class="summary-card">
+
+  <h2>
+
+    Order Summary
+
+  </h2>
+
+  <div>
+
+    <span>
+      Subtotal
+    </span>
+
+    <span>
+      ₹{{cartService.subTotal()}}
+    </span>
+
+  </div>
+
+  <div>
+
+    <span>
+      GST
+    </span>
+
+    <span>
+      ₹{{cartService.gstAmount()}}
+    </span>
+
+  </div>
+
+  <div>
+
+    <span>
+      Shipping
+    </span>
+
+    <span>
+      ₹{{cartService.shippingCharge()}}
+    </span>
+
+  </div>
+
+  <hr>
+
+  <div>
+
+    <strong>
+      Total
+    </strong>
+
+    <strong>
+      ₹{{cartService.grandTotal()}}
+    </strong>
+
+  </div>
+
+  <button
+   (click)="proceedCheckout()">
+
+   Checkout
+
+  </button>
+
+</div>

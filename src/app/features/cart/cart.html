@@ -1,0 +1,31 @@
+@if(
+ cartService.cartItems().length
+){
+
+<div class="cart-layout">
+
+  <div class="items">
+
+    @for(
+    item of cartService.cartItems();
+    track item.product.id
+    ){
+
+      <app-cart-item
+      [item]="item">
+      </app-cart-item>
+
+    }
+
+  </div>
+
+  <app-cart-summary />
+
+</div>
+
+}
+@else {
+
+<app-empty-cart />
+
+}

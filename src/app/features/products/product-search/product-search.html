@@ -1,0 +1,13 @@
+<input
+
+ class="search-box"
+
+ type="text"
+
+ placeholder="Search products..."
+
+ [ngModel]="state.searchKeyword()"
+
+ (ngModelChange)="
+ state.searchKeyword.set($event)
+ ">

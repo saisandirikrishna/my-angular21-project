@@ -1,0 +1,61 @@
+<div class="cart-item">
+
+  <img
+   [src]="item.product.imageUrl">
+
+  <div>
+
+    <h3>
+      {{item.product.name}}
+    </h3>
+
+    <p>
+      ₹{{item.product.price}}
+    </p>
+
+  </div>
+
+  <div class="quantity">
+
+    <button
+    (click)="
+    cartService.decreaseQuantity(
+    item.product.id
+    )">
+
+      -
+
+    </button>
+
+    <span>
+
+      {{item.quantity}}
+
+    </span>
+
+    <button
+    (click)="
+    cartService.increaseQuantity(
+    item.product.id
+    )">
+
+      +
+
+    </button>
+
+  </div>
+
+  <button
+
+   class="remove-btn"
+
+   (click)="
+   cartService.removeItem(
+   item.product.id
+   )">
+
+   Remove
+
+  </button>
+
+</div>

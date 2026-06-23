@@ -1,0 +1,34 @@
+<div class="card">
+
+  <h3>
+
+    Personal Information
+
+  </h3>
+
+  <form
+  [formGroup]="form">
+
+    <input
+    formControlName="firstName">
+
+    <input
+    formControlName="lastName">
+
+    <input
+    formControlName="email">
+
+    <input
+    formControlName="phone">
+
+    <button
+    type="button"
+    (click)="save()">
+
+      Save Changes
+
+    </button>
+
+  </form>
+
+</div>

@@ -1,0 +1,46 @@
+.success-page {
+
+ height:80vh;
+
+ display:flex;
+
+ justify-content:center;
+
+ align-items:center;
+}
+
+.success-card {
+
+ background:white;
+
+ padding:3rem;
+
+ border-radius:24px;
+
+ text-align:center;
+
+ width:500px;
+}
+
+.checkmark {
+
+ width:100px;
+
+ height:100px;
+
+ margin:auto;
+
+ border-radius:50%;
+
+ display:flex;
+
+ justify-content:center;
+
+ align-items:center;
+
+ font-size:3rem;
+
+ background:#16a34a;
+
+ color:white;
+}

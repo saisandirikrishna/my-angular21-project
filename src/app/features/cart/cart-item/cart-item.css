@@ -1,0 +1,35 @@
+.cart-item {
+
+ display:grid;
+
+ grid-template-columns:
+
+ 120px
+ 1fr
+ auto
+ auto;
+
+ gap:20px;
+
+ align-items:center;
+
+ padding:20px;
+
+ border-radius:16px;
+
+ background:white;
+}
+
+img {
+
+ width:100px;
+
+ border-radius:12px;
+}
+
+.quantity {
+
+ display:flex;
+
+ gap:10px;
+}

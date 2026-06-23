@@ -1,0 +1,38 @@
+.categories {
+
+  margin-top: 2rem;
+
+}
+
+.grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(200px,1fr)
+    );
+
+  gap: 1rem;
+}
+
+.card {
+
+  padding: 1.5rem;
+
+  border-radius: 15px;
+
+  background: white;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.card:hover {
+
+  transform:
+    translateY(-5px);
+
+}

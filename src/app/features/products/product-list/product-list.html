@@ -1,0 +1,26 @@
+<div class="catalog-page">
+
+  <div class="toolbar">
+
+      <app-product-search />
+
+      <app-product-filter />
+
+  </div>
+
+  <div class="grid">
+
+      @for(
+      product of filteredProducts();
+      track product.id
+      ){
+
+        <app-product-card
+        [product]="product">
+        </app-product-card>
+
+      }
+
+  </div>
+
+</div>

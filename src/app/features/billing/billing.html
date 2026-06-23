@@ -1,0 +1,75 @@
+<div class="billing-page">
+
+  <div class="billing-form">
+
+    <h2>
+      Shipping Details
+    </h2>
+
+    <form
+    [formGroup]="billingForm">
+
+      <input
+      formControlName="customerName"
+      placeholder="Full Name">
+
+      <input
+      formControlName="email"
+      placeholder="Email">
+
+      <input
+      formControlName="phone"
+      placeholder="Phone">
+
+      <textarea
+      formControlName="address"
+      placeholder="Address">
+      </textarea>
+
+      <input
+      formControlName="city"
+      placeholder="City">
+
+      <input
+      formControlName="state"
+      placeholder="State">
+
+      <input
+      formControlName="postalCode"
+      placeholder="Postal Code">
+
+    </form>
+
+  </div>
+
+  <div class="summary">
+
+    <h2>
+      Order Summary
+    </h2>
+
+    <p>
+      Subtotal :
+      ₹{{cartService.subTotal()}}
+    </p>
+
+    <p>
+      GST :
+      ₹{{cartService.gstAmount()}}
+    </p>
+
+    <p>
+      Total :
+      ₹{{cartService.grandTotal()}}
+    </p>
+
+    <button
+    (click)="placeOrder()">
+
+      Proceed Payment
+
+    </button>
+
+  </div>
+
+</div>

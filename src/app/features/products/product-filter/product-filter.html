@@ -1,0 +1,22 @@
+<div class="filter-wrapper">
+
+  <select
+   (change)="
+   state.selectedCategory
+   .set($any($event.target).value)
+   ">
+
+   @for(
+     category of categories;
+     track category
+   ){
+
+      <option>
+        {{category}}
+      </option>
+
+   }
+
+  </select>
+
+</div>

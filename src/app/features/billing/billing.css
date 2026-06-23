@@ -1,0 +1,45 @@
+.billing-page {
+
+ display:grid;
+
+ grid-template-columns:
+ 2fr 1fr;
+
+ gap:30px;
+
+ padding:2rem;
+}
+
+.billing-form {
+
+ background:white;
+
+ padding:2rem;
+
+ border-radius:20px;
+}
+
+input,
+textarea {
+
+ width:100%;
+
+ padding:14px;
+
+ margin-bottom:16px;
+
+ border-radius:12px;
+
+ border:1px solid #ddd;
+}
+
+.summary {
+
+ background:white;
+
+ padding:2rem;
+
+ border-radius:20px;
+
+ height:fit-content;
+}

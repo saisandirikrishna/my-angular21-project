@@ -19,7 +19,7 @@ spec:
       containers:
       - name: angular-app
 
-        image: 533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+        image: 872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
 
         ports:
         - containerPort: 80

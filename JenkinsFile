@@ -32,19 +32,25 @@ pipeline {
         }
 
         stage('Push To ECR') {
-            steps {
-                sh '''
-                aws ecr get-login-password --region us-east-1 | \
-                docker login --username AWS --password-stdin 872111493358.dkr.ecr.us-east-1.amazonaws.com
+    steps {
+        sh '''
+        aws ecr get-login-password --region us-east-1 | \
+        docker login --username AWS --password-stdin 872111493358.dkr.ecr.us-east-1.amazonaws.com
 
-                docker tag angular-app:${BUILD_NUMBER} \
-                872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+        docker tag angular-app:${BUILD_NUMBER} \
+        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
 
-                docker push \
-                872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
-                '''
-            }
-        }
+        docker push \
+        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+
+        docker tag angular-app:${BUILD_NUMBER} \
+        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+
+        docker push \
+        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+        '''
+    }
+}
 
         stage('Debug EKS') {
     steps {

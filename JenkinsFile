@@ -47,27 +47,28 @@ pipeline {
         }
 
         stage('Debug EKS') {
-            steps {
-                sh '''
-                whoami
-                pwd
-                kubectl config current-context
-                kubectl get nodes
-                '''
-            }
-        }
+    steps {
+        sh '''
+        export KUBECONFIG=/var/lib/jenkins/.kube/config
 
-        stage('Deploy To EKS') {
-            steps {
-                sh """
-                kubectl apply -f k8s/ --validate=false
+        whoami
+        pwd
+        kubectl config current-context
+        kubectl get nodes
+        '''
+    }
+}
 
-                kubectl set image deployment/angular-app \
-                angular-app=533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+stage('Deploy To EKS') {
+    steps {
+        sh '''
+        export KUBECONFIG=/var/lib/jenkins/.kube/config
 
-                kubectl rollout status deployment/angular-app
-                """
-            }
-        }
+        kubectl apply -f k8s/
+        kubectl rollout restart deployment/angular-app
+        kubectl rollout status deployment/angular-app
+        '''
+    }
+}
     }
 }

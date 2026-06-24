@@ -46,28 +46,28 @@ pipeline {
             }
         }
 
-        // stage('Debug EKS') {
-        //     steps {
-        //         sh '''
-        //         whoami
-        //         pwd
-        //         kubectl config current-context
-        //         kubectl get nodes
-        //         '''
-        //     }
-        // }
+        stage('Debug EKS') {
+            steps {
+                sh '''
+                whoami
+                pwd
+                kubectl config current-context
+                kubectl get nodes
+                '''
+            }
+        }
 
-        // stage('Deploy To EKS') {
-        //     steps {
-        //         sh """
-        //         kubectl apply -f k8s/ --validate=false
+        stage('Deploy To EKS') {
+            steps {
+                sh """
+                kubectl apply -f k8s/ --validate=false
 
-        //         kubectl set image deployment/angular-app \
-        //         angular-app=533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+                kubectl set image deployment/angular-app \
+                angular-app=533267396688.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
 
-        //         kubectl rollout status deployment/angular-app
-        //         """
-        //     }
-        // }
+                kubectl rollout status deployment/angular-app
+                """
+            }
+        }
     }
 }

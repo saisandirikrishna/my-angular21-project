@@ -14,7 +14,12 @@ RUN npm run build
 # Runtime Stage
 FROM nginx:alpine
 
-COPY --from=build /app/dist/angular-app/browser /usr/share/nginx/html
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=build /app/dist/angular-app/browser/ /usr/share/nginx/html/
+
+RUN cp /usr/share/nginx/html/index.csr.html \
+       /usr/share/nginx/html/index.html
 
 EXPOSE 80
 

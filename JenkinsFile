@@ -35,46 +35,46 @@ pipeline {
     steps {
         sh '''
         aws ecr get-login-password --region us-east-1 | \
-        docker login --username AWS --password-stdin 872111493358.dkr.ecr.us-east-1.amazonaws.com
+        docker login --username AWS --password-stdin 381491825192.dkr.ecr.us-east-1.amazonaws.com
 
         docker tag angular-app:${BUILD_NUMBER} \
-        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+        381491825192.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
 
         docker push \
-        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
+        381491825192.dkr.ecr.us-east-1.amazonaws.com/angular-app:${BUILD_NUMBER}
 
         docker tag angular-app:${BUILD_NUMBER} \
-        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+        381491825192.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
 
         docker push \
-        872111493358.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
+        381491825192.dkr.ecr.us-east-1.amazonaws.com/angular-app:latest
         '''
     }
 }
 
-        stage('Debug EKS') {
-    steps {
-        sh '''
-        export KUBECONFIG=/var/lib/jenkins/.kube/config
+//     stage('Debug EKS') {
+//         steps {
+//             sh '''
+//             export KUBECONFIG=/var/lib/jenkins/.kube/config
 
-        whoami
-        pwd
-        kubectl config current-context
-        kubectl get nodes
-        '''
-    }
-}
+//             whoami
+//             pwd
+//             kubectl config current-context
+//             kubectl get nodes
+//             '''
+//         }
+//     }
 
-stage('Deploy To EKS') {
-    steps {
-        sh '''
-        export KUBECONFIG=/var/lib/jenkins/.kube/config
+// stage('Deploy To EKS') {
+//     steps {
+//         sh '''
+//         export KUBECONFIG=/var/lib/jenkins/.kube/config
 
-        kubectl apply -f k8s/
-        kubectl rollout restart deployment/angular-app
-        kubectl rollout status deployment/angular-app
-        '''
-    }
-}
+//         kubectl apply -f k8s/
+//         kubectl rollout restart deployment/angular-app
+//         kubectl rollout status deployment/angular-app
+//         '''
+//     }
+// }
     }
 }
